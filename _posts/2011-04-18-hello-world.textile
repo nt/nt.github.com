@@ -1,0 +1,10 @@
+---
+layout: post
+title: Mise en place du blog
+---
+
+h1. {{ page.title }}
+
+p(meta). 18 avril 2011 - Paris
+
+Hello world !
