@@ -1,0 +1,9 @@
+---
+layout: post
+title: Ma préparation au Google Code Jam 2011
+published: false
+---
+
+h1. {{ page.title }}
+
+p(meta). le - Paris

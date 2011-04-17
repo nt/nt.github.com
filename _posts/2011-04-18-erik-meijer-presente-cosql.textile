@@ -1,0 +1,77 @@
+---
+layout: post
+title: Le noSQL présenté par Erik Meijer
+published: false
+---
+
+h1. {{ page.title }}
+
+p(meta). Ce post essaie de reprendre les points principaux de la présentation faite par Erik Meijer lors du WebWorkersCamp du 16 avril 2011 à La Cantine, Paris.
+
+
+
+Category theory
+NoSql dual of SQL
+
+les références (adresse des objets) sont inversées. en sql on normalise -> renverse le sens de la réf.
+
+-> c'est la category theory.. http://en.wikipedia.org/wiki/Category_theory
+
+The dutch are cheap, the dual theory: buy one, get on free
+
+en fait SQL et coSQL
+
+le web ou de la ram sont des stores key/value
+
+Key value stores are the dual of foreign key / primary key stores
+
+SQL coSQL
+---------
+children point to parent, oposite
+entities have identity (extensionnal), environment determines identity (intensional)
+environments coordnate changes (transaction = synchronous), entities responsible to react to changes (eventually consistent = async)
+closed world, open world
+not scalable, scalable
+not compositional, compositional
+
+in SLQ object are typed (to match pk-fk) not necerray in coSQL
+in SQL sotre value, in coSQL query by key -> can compute on the fly
+in SQL must maintin references, can't scale easily
+in coSQL must be very attentive to breakdown ? imperative ?
+
+example Amazon SimpleDB
+-> a row can have a collection
+-> true dual to sql database
+
+mathematics dictates that linq is the way to work for both (ex doc store raven)
+Monads is theory behind linqs
+
+définit
+ens vide, O::M<T>
+union, U::M<T> x M<T> -> M<T>
+{_}::T->M<T>
+
+sélection (from)
+projetion (where)
+product, X::M<T> x M<S> -> M<T,S>
+
+higher oreder functions:
+selectMany:: M<t> x (T->M<S>) -> M<S> 
+engendre toutes les autres requêtes
+
+
+in monads 
+M<> is functor
+
+/ is reduce
+* is map
+
+lemme de birds
+toute fonction peut être décrite en map reduce si elle est homomorphique
+
+-> selectMany et homomorphique  -> toute requête linq peut être map réducée
+
+
+Article: linq to datacenter
+http://www.cca08.org/papers/Paper30-Erik-Meijer.pdf
+
