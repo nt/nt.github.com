@@ -86,6 +86,11 @@ ul.posts {
   line-height: 1.5em;
 }
 
+.footnote {
+  font-size: 0.8em;
+  line-height: 1em;
+}
+
 .title {
   color: #a00;
   font-weight: bold;
@@ -195,3 +200,7 @@ ul.posts {
   #related h2 {
     margin-bottom: 1em;
   }
+
+#disqus_thread {
+  font-size: 1em;
+}
