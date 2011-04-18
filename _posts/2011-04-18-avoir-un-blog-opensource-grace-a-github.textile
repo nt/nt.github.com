@@ -1,37 +1,38 @@
 ---
 layout: post
-title: Blogger grâce à Github
-published: false
+title: Blogger en open source grâce à Github
 ---
 
 h1. {{ page.title }}
 
-p(meta). 17 avril 2011 - Paris
+p(meta). 18 avril 2011 - Paris
 
-Ce premier billet est une succinte présentation de "Github":http://github.com, une plateforme de référence pour l'hébergement de code source, et en particulier de projets opensource. J'illustre ensuite avec un cas d'usage: ce blog.
+Ce premier billet est une succinte présentation de "Github":http://github.com, une plateforme de référence pour l'hébergement de code source, et en particulier de projets opensource. J'illustre ensuite avec un cas un peu particulier: le blogging.
 
-h2. GitHub
+h2. GitHub [1]
 
-Github repose sur "git":http://git-scm.com/ qui est un outil de contrôle de version du code source. De part l'instabilité d'un projet contenant du code, il est indispensable pour les développeurs de comprendre chaque modification qui a été faite. On trâce donc l'objectif de cette modification, l'auteur et bien sur l'ensemble des changements.
+Github repose sur *git* [2] qui est un outil de contrôle de version du code source. De part l'instabilité d'un projet contenant du code, il est indispensable pour les développeurs de comprendre chaque modification qui a été faite. On trâce donc l'objectif de cette modification, l'auteur et bien sur l'ensemble des changements.
 
-La tagline de Github: __Social Coding__ décrit assez bien le service rendu. Chaque utilisateur peut "forker" un projet, c'est à dire le cloner dans sur son compte personnel pour y apporter les modifications qu'il souhaite. Il peut ensuite envoyer  une "pull request" qui est une demande d'intégration à l'auteur original. Celui-ci peut alors choisir ou non d'utiliser cette modification sur le projet original. Commenter les modifications, etc..
+La tagline de Github: __Social Coding__ décrit assez bien le service rendu. Chaque utilisateur de git peut "forker" un projet, c'est à dire le cloner dans sur son compte personnel pour y apporter les modifications qu'il souhaite. Il peut ensuite envoyer  une "pull request" qui est une demande d'intégration à l'auteur original qui choisit d'utiliser ou non d'utiliser cette modification sur le projet original.
 
-Github qui est gratuit pour les projets open source est devenu très populaire dans ce milieu. Voici un exemple: le projet "Ruby on Rail":http://rubyonrails.org/ publie le code de son framework ici: "https://github.com/rails/rails":https://github.com/rails/rails et compte pas moins de 1400 forks. C'est à dire qu'il y a 1400 personnes qui ont une copie de ce projet. Il y a en ce moment "39 pull requests":https://github.com/rails/rails/pulls faite par autant de contributeurs. En ce moment l'utilisateur "amw":http://github.com/amw essaie d'obtenir de "tenderlove":http://github.com/tenderlove, un maintainer de Rails de changer le spectre de décalaration des lambda fonction. Tenderlove relis, demande l'ajout de tests ce que fait amw. S'en suit une longue discussion sur la problématique traitée, et finalement tenderlove est satisfait et va probablement intégrer la requête. Tout ça se passe  "ici":https://github.com/rails/rails/pull/169.
+Github, étant gratuit pour les projets open source, est devenu très populaire dans ce milieu. Prenons par exemple le projet "Ruby on Rail":http://rubyonrails.org/ qui publie le code de son framework ici: "https://github.com/rails/rails":https://github.com/rails/rails. 37signal compte pas moins de 1400 forks du projet Rails. C'est à dire que 1400 personnes ont une copie de ce projet et peuvent y apporter les modifications qu'ils souhaitent. Il y a en ce moment "39 pull requests":https://github.com/rails/rails/pulls faite par autant de contributeurs. Par exemple, l'utilisateur *amw* est en train d'essayer d'obtenir de *tenderlove*, un maintainer de Rails, de changer le spectre de décalaration des lambda fonctions. Tenderlove relis, demande l'ajout de tests ce que fait amw. S'en suit une longue discussion sur la problématique traitée, et finalement tenderlove, satisfait de la contribution, laisse entendre qu'il va probablement intégrer la requête. Tout ça se passe  "ici":https://github.com/rails/rails/pull/169.
 
 h2. Avoir un blog open source
 
-Cela faisait un moment que j'avais envie de réessayer l'expérience du blogging. J'ai cherché des solutions offrant à la fois un confort d'utilisation et controle du contenu. C'est l'article de Tom Preston-Werner, "Blogging like a Hacker":http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html qui ma convaincu en faveur de "Jekyll":https://github.com/mojombo/jekyll.
+Cela faisait un moment que j'avais envie de réessayer l'expérience du blogging. J'ai cherché des solutions offrant à la fois un confort d'utilisation et un contrôle du contenu. C'est l'article de Tom Preston-Werner, __Blogging like a Hacker__ [3] qui ma convaincu en faveur de "Jekyll":https://github.com/mojombo/jekyll.
 
 Les pages de ce blog sont donc générées grâce à Jekyll, et ensuite hébergées par Github. Le code source sur blog est "ici":https://github.com/nt/nt.github.com, et on peut observer cette page en particulier "ici":https://github.com/nt/nt.github.com/blob/master/_posts/2011-04-18-avoir-un-blog-opensource-grace-a-github.textile.
 
-Comment m'y suis-je pris ? J'ai commencé par forker le blog de Tom, un fondateur de github (avec son accord) qui a déjà mis en place beaucoup de choses pour son blog personnel. J'ai retiré ses posts pour y mettre le mien. J'ai rajouté des commentaires grâce à Disqus et me voila prêt.
+Comment m'y suis-je pris ? J'ai commencé par forker le blog de Tom, un fondateur de github (avec son accord) pour profiter de beaucoup de choses qu'il a mise en place pour son blog personnel. J'ai retiré ses articles pour y mettre le mien. J'ai rajouté des commentaires grâce à Disqus et me voila prêt.
 
-Maintenant si vous comme moi que le design du site laisse à désirer, pas de problèmes, forkez mon projet et faites moi une proposition en m'envoyant une pull request. Je peux maintenant envoyez mes ébauches d'articles à des amis pour relecture et modification grâce à github, et garder la trace de toutes les modifications. Quelqu'un qui souhaiterai faire un guestpost sur mon blog peux forker le site, ajouter son post et m'envoyer sa pull request. 
+L'intérêt d'opensourcer le blog: maintenant si vous comme moi vous trouvez que le design du site laisse à désirer, pas de problèmes, forkez mon projet et faites moi une proposition en m'envoyant une pull request. Je peux également envoyez mes ébauches d'articles à des amis pour relecture et modification grâce à github, et garder la trace de toutes les modifications. Quelqu'un qui souhaiterai faire un guestpost sur mon blog peux forker le site, ajouter son post et m'envoyer sa pull request. 
 
-Il n'y a pas de doutes, Github a récidivé en inventant le __Social Blogging__ pour les hackers. Si vous voulez vous y mettre rapidement "forkez mon site":https://github.com/nt/nt.github.com ;)
+Blogger open source c'est un peu comme écrire dans un wiki, mais cela nécessite certains prérequis. Mais il n'y a pas de doutes, Github a récidivé en inventant le __Social Blogging__ pour les hackers. Si vous voulez vous y mettre rapidement "forkez mon site":https://github.com/nt/nt.github.com ;)
 
-h3. Ressources
+----
 
-* L'entreprise Github sur crunchbase et techcrunch
-* Un bon tutorial git
-* Blogging like a hacker
+fn1. Github sur "Techcrunch":http://techcrunch.com/tag/github/ et "CrunchBase":http://www.crunchbase.com/company/github
+
+fn2. "Un tutorial git sans prérequis":http://hoth.entp.com/output/git_for_designers.html
+
+fn3. "__Blogging like a hacker__":http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html, de Tom Preston-Werner

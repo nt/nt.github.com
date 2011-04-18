@@ -1,6 +1,10 @@
 ---
 layout: default
 ---
+{% unless post %} 
+  {% assign post = page %} 
+{% endunless %}
+
 <div id="post">
 {{ content }}
 </div>
