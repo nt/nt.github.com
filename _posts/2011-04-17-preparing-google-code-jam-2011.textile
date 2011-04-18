@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Se préparer au Google Code Jam 2011
-published: true
+published: false
 ---
 
 h1. {{ page.title }}
@@ -28,8 +28,7 @@ Explication de la solution..
 
 h3. La programmation dynamique
 
-La programmation dynaique est un outils classique du participant. Ce terme pompeux[1] cache en fait une utilisation intelligente de la mémoisation ()
-
+La programmation dynaique est un outils classique du participant. Ce terme ambigu[1] cache en fait une utilisation intelligente de la mémoisation ()
 
 {% highlight java %}
 void calculateCorner() {
@@ -41,7 +40,6 @@ void calculateCorner() {
   }
 }
 {% endhighlight %}
-
 
 h3. Suite et fin du problème
 
@@ -55,4 +53,4 @@ Il faut donc avoir les bon réflexes et utiliser une "queue prioritaire":http://
 
 fn1. Le terme "dynamic programming" a été choisi car . Lisez l'histoire "ici":http://arcanesentiment.blogspot.com/2010/04/why-dynamic-programming.html et sur Google.
 
-fn2. Une technique classique: le bruteforce l'algorithme sans finesse ni rafinement mais qui fait le travail car le temps requis est raisonnable.
+fn2. Calculer sans finesse ni rafinement. En compétition c'est intéressant si réalisable car fournit une solution sans réfléchir.

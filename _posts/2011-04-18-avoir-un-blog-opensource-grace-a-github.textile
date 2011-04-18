@@ -20,7 +20,7 @@ Github qui est gratuit pour les projets open source est devenu très populaire d
 
 h2. Avoir un blog open source
 
-Cela faisait un moment que j'avais envie de réessayer l'expérience du blogging. J'ai cherché des solutions offrant à la fois un confort d'utilisation et controle du contenu. C'est l'excellent article de Tom Preston-Werner, "Blogging like a Hacker":http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html qui ma convaincu en faveur de "Jekyll":https://github.com/mojombo/jekyll.
+Cela faisait un moment que j'avais envie de réessayer l'expérience du blogging. J'ai cherché des solutions offrant à la fois un confort d'utilisation et controle du contenu. C'est l'article de Tom Preston-Werner, "Blogging like a Hacker":http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html qui ma convaincu en faveur de "Jekyll":https://github.com/mojombo/jekyll.
 
 Les pages de ce blog sont donc générées grâce à Jekyll, et ensuite hébergées par Github. Le code source sur blog est "ici":https://github.com/nt/nt.github.com, et on peut observer cette page en particulier "ici":https://github.com/nt/nt.github.com/blob/master/_posts/2011-04-18-avoir-un-blog-opensource-grace-a-github.textile.
 
@@ -29,3 +29,9 @@ Comment m'y suis-je pris ? J'ai commencé par forker le blog de Tom, un fondateu
 Maintenant si vous comme moi que le design du site laisse à désirer, pas de problèmes, forkez mon projet et faites moi une proposition en m'envoyant une pull request. Je peux maintenant envoyez mes ébauches d'articles à des amis pour relecture et modification grâce à github, et garder la trace de toutes les modifications. Quelqu'un qui souhaiterai faire un guestpost sur mon blog peux forker le site, ajouter son post et m'envoyer sa pull request. 
 
 Il n'y a pas de doutes, Github a récidivé en inventant le __Social Blogging__ pour les hackers. Si vous voulez vous y mettre rapidement "forkez mon site":https://github.com/nt/nt.github.com ;)
+
+h3. Ressources
+
+* L'entreprise Github sur crunchbase et techcrunch
+* Un bon tutorial git
+* Blogging like a hacker
