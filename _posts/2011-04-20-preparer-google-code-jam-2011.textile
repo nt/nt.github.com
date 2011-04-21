@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Se préparer au Google Code Jam 2011
-published: false
 ---
 
 h1. {{ page.title }}

@@ -9,6 +9,11 @@ h1. {{ page.title }}
 p(meta). Ce post essaie de reprendre les points principaux de la présentation faite par Erik Meijer lors du WebWorkersCamp du 16 avril 2011 à La Cantine, Paris.
 
 
+h1. Le coSQL, dual du SQL
+
+h2. Linq et Monads
+
+
 
 Category theory
 NoSql dual of SQL
