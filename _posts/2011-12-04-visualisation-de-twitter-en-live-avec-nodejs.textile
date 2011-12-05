@@ -36,4 +36,4 @@ Beaucoup de package twitter pour node ne sont pas maintenus et ont beaucoup plus
 
 La visualisation est réalisée grâce à une très élégante lib de dataviz que je recommande chaudement: "D3":http://mbostock.github.com/d3/ de Mike Bostock.
 
-Enfin tout le code produit est publié sur mon "github":https://github.com/nt/cooccurrences_node. Enjoy !
+L'appli a été déployée sur "Heroku":https://www.heroku.com/ avec une facilité déconcertante. Enfin tout le code produit est publié sur mon "github":https://github.com/nt/cooccurrences_node. Enjoy !
