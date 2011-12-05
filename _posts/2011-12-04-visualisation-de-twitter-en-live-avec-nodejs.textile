@@ -1,0 +1,39 @@
+---
+layout: twitter_visu
+title: Visualiser Twitter en live grâce au streaming
+---
+
+h1. {{ page.title }}
+
+p(meta). Une petite explication d'un hack réalisé il y a un mois lors du "HackDayParis":http://hackdayparis.org/
+
+p(#rates). 
+
+p(#chart). 
+
+h2. Eléments de lecture
+
+* Sur ce graphe chaque sphère représente une personalité citée sur Twitter parmi une sélection prédéfinie
+* La taille choisie pour chaque sphère représente le nombre de citations relative en échelle logarithmique (2 fois plus grand => 10 fois plus cité)
+* Chaque "contraction" du graphe représente une nouvelle citation
+* Les compteurs sont divisés par deux toutes les demi heures
+
+h2. L'exploit du temps réel grâce à l'API de streaming de Twitter
+
+Cette visualisation est possible grâce à une prouesse des ingénieurs de twitter. "L'API de Streaming":https://dev.twitter.com/docs/streaming-api permet aux développeur de client Twitter d'établir une connection directe et permanente entre les utilisateurs et le service. Cela permet de recevoir de façon continue les tweet mais également de les émettre directement.
+
+De la même façon l'api m'a permit de m'abonner à des sujets, en l'occurrence des nom de personnalité et de les recevoir immédiatement au moment de leur publication. Ce contenu est renvoyé à votre navigateur en utilisant la même technologie de streaming pour mettre à jour la visualisation.
+
+Le transfert du tweet du clavier de l'utilisateur jusque dans cette visualisation est donc quasi instantané, d'ailleurs voici le dernier tweet analysé: 
+
+p{height:2em; padding-bottom:2em; font-size:8pt}(#lasttweet). 
+
+h2. Quelques détails technique
+
+Le code coté serveur est écrit en "NodeJS":http://nodejs.org/ ce qui permet une programmation événementielle (ie: nouveau tweet). 
+
+Beaucoup de package twitter pour node ne sont pas maintenus et ont beaucoup plus de fonctionnalités que nécessaire. J'ai trouvé plus simple de gérer la connection de streaming avec les outils natifs de node. La connection avec le navigateur du client est en "socket.io":http://socket.io qui est une librairie très pratique et facile à prendre en main.
+
+La visualisation est réalisée grâce à une très élégante lib de dataviz que je recommande chaudement: "D3":http://mbostock.github.com/d3/ de Mike Bostock.
+
+Enfin tout le code produit est publié sur mon "github":https://github.com/nt/cooccurrences_node. Enjoy !
