@@ -1,0 +1,66 @@
+---
+layout: post
+title: Détecter les zones nettes dans une image en python
+---
+
+h1. {{ page.title }}
+
+p(meta). Le 21 décembre 2011 - Lausanne
+
+h2. Enoncé
+
+Cet article expose un exercice que j'ai du réaliser lors d'un entretien d'embauche dans une startup parisienne. L'objectif était de détourer les zones nettes dans une image en utilisant python. J'ai choisi un jeu d'images de test de six éléments, certaines étant beaucoup plus simple à traiter que d'autres.
+
+!(column)/images/blur/orig_camargue.jpeg!
+
+Sur cette image nous observons que le photographe a choisi une profondeur de champ très faible, la mise au point est faite sur la main et le visage de la première personne est déjà flou.
+
+h2. Marquer les zones nettes
+
+La première idée est d'essayer d'identifier les zones à fort contraste dans l'image, un réflexe immédiat pour celà est d'aller étudier la dérivée. J'ai utilisé la bibliothèque de calcul numérique en python "scipy":http://docs.scipy.org/doc/scipy/reference/ et en particulier son module d'analyse d'image "scipy.ndimage":http://docs.scipy.org/doc/scipy/reference/tutorial/ndimage.html.
+
+J'ai d'abords ouvert l'image et j'en ai créé une représentation "plate", c'est à dire en niveaux de gris. J'ai ensuite calculé le laplacien de l'image, voici le résultat:
+
+!(column)/images/blur/laplacien_camargue.png!
+
+h2. Obtenir un fond noir
+
+La transformation précédente a gommé les zones floues sans trop dégrader les zones nettes. Le résultat est pricipalement gris, cela signifie qu'il y a des variations de lumière homogène: changement de couleur, etc.. 
+
+Pour supprimer complètement cette information et obtenir quelque chose de plus binaire (flou / pas flou) il faut applatir l'image, c'est à dire retirer la composante à variation faible. En analyse d'image il y a une trasformation faite pour celà: il s'agit du "TopHat":http://en.wikipedia.org/wiki/Top-hat_transform qui est l'une des transformation classiques de morpho-math.
+
+!(column)/images/blur/tophat_camargue.png!
+
+En applicant la transformation sur l'image précédente on a bien le résultat escompté. Les zones à faible variation de lumière sont maintenant noires et les zones nettes portent des marqueurs blancs. 
+
+Le contour du visage est toujours visible car il est plus net que le reste de l'image. Je pense que l'on aurait pu effacer ces traits en augementant la taille de l'élément structurel du tophat, mais je n'ai pas eu le temps de le vérifier.
+
+h3. Segmenter l'image
+
+Il faut maintenant transformer cette image qui contient des points plus ou moins dense dans certaines zones en une image qui représente des zones de netteté. Pour cela mon examinateur m'a conseillé de segmenter l'image. C'est donc ce que j'ai fait avec la lib "Efficient Graph-Based Image Segmentation":http://www.cs.brown.edu/~pff/segment/ que j'ai utilisé en boite noire en testant différents paramètres.
+
+!(column)/images/blur/segment_camargue.png!
+
+h3. Classifier les zones
+
+Il faut maintenant choisir pour chaque zone si elle est considérée comme floue ou comme nette. Cela est fait grâce à une heuristique simple (et clairement perfectible). Dans chaque zones identifiée, nous regardons la quantité de points blanc dans l'image tophat et si elle dépasse un certain seuil elle est considérée nette.
+
+!(column)/images/blur/tophat_mask_camargue.png!
+
+Je pense que le résultat peut être fortement amélioré en améliorant la cette heuristique, mais également en réalisant un tophat plus propre, c'est à dire en étudiant mieux les différent éléments structurels.
+
+h4. Autres images
+
+!(vignette)/images/blur/orig_carla.jpeg! !(vignette)/images/blur/laplacien_carla.png! !(vignette)/images/blur/tophat_carla.png! !(vignette)/images/blur/segment_carla.png! !(vignette)/images/blur/tophat_mask_carla.png!
+
+!(vignette)/images/blur/orig_conchords.jpeg! !(vignette)/images/blur/laplacien_conchords.png! !(vignette)/images/blur/tophat_conchords.png! !(vignette)/images/blur/segment_conchords.png! !(vignette)/images/blur/tophat_mask_conchords.png!
+
+!(vignette)/images/blur/orig_golf.jpeg! !(vignette)/images/blur/laplacien_golf.png! !(vignette)/images/blur/tophat_golf.png! !(vignette)/images/blur/segment_golf.png! !(vignette)/images/blur/tophat_mask_golf.png!
+
+!(vignette)/images/blur/orig_matt.jpeg! !(vignette)/images/blur/laplacien_matt.png! !(vignette)/images/blur/tophat_matt.png! !(vignette)/images/blur/segment_matt.png! !(vignette)/images/blur/tophat_mask_matt.png!
+
+!(vignette)/images/blur/orig_tree.jpeg! !(vignette)/images/blur/laplacien_tree.png! !(vignette)/images/blur/tophat_tree.png! !(vignette)/images/blur/segment_tree.png! !(vignette)/images/blur/tophat_mask_tree.png!
+
+h5. Sources et ressources
+
+Tout le code produit est publié sur "github":https://github.com/nt/blur. Pour en apprendre plus sur l'analyse d'images, je vous recommande le site de "morpho-math des Mines de Paris":http://cmm.ensmp.fr/index_eng.html qui a plusieurs pdf en téléchargement libre.

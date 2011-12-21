@@ -194,6 +194,16 @@ ul.posts {
   #post pre.terminal code {
     background-color: #333;
   }
+  
+  #post img.column {
+    padding: 10px;
+    width: 566px;
+  }
+
+  #post img.vignette {
+    padding: 5px;
+    width: 100px;
+  }
 
 #related {
   margin-top: 2em;
