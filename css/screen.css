@@ -22,6 +22,10 @@ body {
   text-align: center;
 }
 
+code {
+  white-space: nowrap;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%;
 }
@@ -214,5 +218,13 @@ ul.posts {
   }
 
 #disqus_thread {
-  font-size: 1em;
+  font-size: 12px;
+  line-height: 1em;
+  margin-top: 30px;
+}
+
+.gister-gist {
+  font-size: 10px;
+  line-height: 1em;
+  margin-bottom: 25px;
 }

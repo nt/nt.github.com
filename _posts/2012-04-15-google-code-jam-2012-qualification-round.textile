@@ -1,0 +1,51 @@
+---
+layout: post
+title: Google Code Jam 2012 - Qualification Round
+---
+
+h1. {{ page.title }}
+
+p(meta). Le 15 avril 2012 - Paris
+
+Le "Google Code Jam":http://code.google.com/codejam est une compétition d'algorithmique qui réunit des hackers du monde entier. Ce weekend plus de 20000 personnes ont tenté de se qualifier et 16000 d'entre elles ont réussit.
+
+Voici une courte explication des solutions qui m'ont permies de me qualifier.
+
+h3. A. Speaking in Tongues
+
+Ce "problème":http://code.google.com/codejam/contest/1460488/dashboard#s=p0&a=0 était franchement très facile, il fallait simplement lire attentivement l'énoncé. Je ne m'attarde donc pas dessus, vous pouvez lire mon input "ici":https://github.com/nt/gcj2012/blob/master/src/Googlerese.java
+
+h3. B. Dancing With the Googlers
+
+Un ensemble de danseurs est noté par un jury composé de trois personnes. Les jurés sont très homogène dans leur notation, et lorsque deux notes diffèrent de deux points, la note globale est considérée surprenante. Le jury ne diffère jamais de plus de deux points.
+Etant donné les notes totale _ti_ des _N_ danseurs, ainsi que le nombre _S_ de note surprenante, quel est le nombre maximum de danseurs à avoir une note individuelle >= _p_. ("énoncé complet":http://code.google.com/codejam/contest/1460488/dashboard#s=p1&a=0) 
+
+L'énoncé devait faire penser à une solution de type "greedy":http://en.wikipedia.org/wiki/Greedy_algorithm, notament parce que l'on cherche un extremum.
+
+Les danseurs ayant pu avoir une note supérieure à _p_ sont ceux ayant une note @ti >= 3*p - 2@: ils forcément obtenu une note @>= p@ sans qu'elle soit qualifiée de surprenante ainsi que ceux ayant une note surprenante @ti >= 3*p - 4@.
+
+Pour simplifier l'implémentation, ont peut donc chercher les candidat dans le tableau des notes triées par ordre décroissant, tout en veillant aux cas @p=1 ou p=0@.
+
+Voici ma solution:
+
+<script src="http://gist-it.appspot.com/github/nt/gcj2012/raw/master/src/Dancing.java"></script>
+
+h4. C. Recycled Numbers
+
+Etant donné deux entiers _A_ et _B_, nous cherchons l'ensemble des couples _(n, m)_ tels que @A <= n < m <= B@ avec _m_ pouvant être obtenu par permutation circulaire des chiffres qui composent _n_. Par exemple 12345 et 34512, ou 6307 et 7630.
+
+Ma première implémentation se réalisait en temps quadratique: j'itérait sur les indices _n_ et _m_ ce qui n'était pas tolérable lorsque _A_ et _B_ était d'un ordre supérieur à 10 ^4^. La solution consistait à n'utiliser qu'un seul indice de A à B et de générer l'ensemble des permutations pour cet indice et de ne retenir que celles qui satisfont les conditions précédentes.
+
+Voici l'ensemble des couples _(n, m)_ compris entre 1111 et 2222:
+
+!(column)/images/gcj2012.png!
+
+Et ma solution:
+
+<script src="http://gist-it.appspot.com/github/nt/gcj2012/blob/master/src/Recycled.java"></script>
+
+h4. D. Mirrors
+
+Le "dernier problème":http://code.google.com/codejam/contest/1460488/dashboard#s=p3&a=0 était nettement plus dur: un homme est placé dans une pièce dont les murs sont recouverts de mirroirs. Etant donné la forme de la pièce ainsi que la position de l'homme, combien d'images de lui même peut-il voir ?
+
+J'ai trouvé le bon algorithme pour ce problème ("solution officielle":http://code.google.com/codejam/contest/1460488/dashboard#s=a&a=3), mais n'ai pas réussit à obtenir une implémentation satifaisante. Je reprendrai peut-être ce "code":https://github.com/nt/gcj2012/blob/master/src/Mirrors.java pour le terminer.
