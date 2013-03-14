@@ -1,0 +1,236 @@
+---
+layout: presentation
+title: Program functionally, please
+---
+<section>
+  <h2>Benefits</h2>
+  <ul>
+    <li>Higher abstractions</li>
+    <li>Concise code</li>
+    <li>Closer to the human mind</li>
+    <li>Easier to test</li>
+  </ul>
+</section>
+<section>
+  <h2>Functional programming principles</h2>
+  <ul>
+    <li>Immutability</li>
+    <li>No side effects</li>
+    <li>Functions are first class</li>
+  </ul>
+</section>
+<section>
+  <h2>First class functions</h2>
+  <p>Functions as an argument</p>
+  <pre>var server = net.createServer(function (socket) {
+    socket.write('Echo server\r\n');
+    socket.pipe(socket);
+  });</pre>
+</section>
+<section>
+  <h2>First class functions</h2>
+  <p>Functions as return values</p>
+  <pre>var color = d3.scale.linear()
+    .domain([-1, 0, 1])
+    .range(["red", "white", "green"]);
+  var c = color(1.1);</pre>
+</section>
+<section>
+  <h2>First class functions</h2>
+  <p>You can use blocks in ruby</p>
+  <p>function in javascript</p>
+  <p>`A => B` type in scala</p>
+</section>
+<section>
+  <h2>Immutability</h2>
+  <ul>
+    <li>Variables shouldn't mutate once they are set</li>
+    <li>Scala has two possible references: vars and vals</li>
+    <li>Reasignment to vals will generate a compile time error</li>
+    <li>-> embrace functional thinking</li>
+  </ul>
+</section>
+<section>
+  <h2>Functional thinking: collection manipulation</h2>
+  <p>
+    Please don't do this
+    <pre>function add1(arr) {
+      for(i in arr) {
+        arr[i] = arr[i]+1;
+      }
+      return arr;
+    }</pre>
+  </p>
+</section>
+<section>
+  <h2>Functional thinking: collection manipulation</h2>
+  <p>
+    See why ?
+    <pre>> add1
+    function add1(arr){
+          for(i in arr) {
+            arr[i] = arr[i]+1;
+          }
+          return arr;
+        }
+    > var l = [1,2,3,4];
+    undefined
+    > add1(l)
+    [2, 3, 4, 5]
+    > l
+    [2, 3, 4, 5]</pre>
+  </p>
+</section>
+<section>
+  <h2>Functional thinking: collection manipulation</h2>
+  <p>
+    Try this
+    <pre>function add1(arr) {
+      return arr.map(function(i) { return i+1; } );
+    }</pre>
+    <i>javascript arrays are functors</i>
+  </p>
+</section>
+<section>
+  <h2>Functional thinking: collection manipulation</h2>
+  <p>
+    <pre>> add1
+    function add1(arr) {
+      return arr.map(function(i) { return i+1; } );
+    }
+    > var l = [1,2,3,4];
+    undefined
+    > add1(l)
+    [2, 3, 4, 5]
+    > l
+    [1, 2, 3, 4]</pre>
+  </p>
+</section>
+<section>
+  <h2>Functional thinking: collection manipulation</h2>
+  <pre>scala> "Le nombre de lettre des mots uniques de cette phrase"
+    .split(" ")
+    .distinct
+    .foldLeft(0)(_ + _.length)
+  res1: Int = 41
+  scala> "Une liste de mots de cette phrase regroupes par longueur"
+    .split(" ")
+    .groupBy(_.length)
+  res2: scala.collection.immutable.Map[Int,Array[java.lang.String]] = Map(5 -> Array(liste, cette), 6 -> Array(phrase), 9 -> Array(regroupes), 2 -> Array(de, de), 3 -> Array(Une, par), 8 -> Array(longueur), 4 -> Array(mots))
+  scala> res2.toList.sortBy(_._1)
+  res3: List[(Int, Array[java.lang.String])] = List((2,Array(de, de)), (3,Array(Une, par)), (4,Array(mots)), (5,Array(liste, cette)), (6,Array(phrase)), (8,Array(longueur)), (9,Array(regroupes)))
+  scala> res3.flatMap(_._2)
+  res4: List[java.lang.String] = List(de, de, Une, par, mots, liste, cette, phrase, longueur, regroupes)</pre>
+</section>
+<section>
+  <h2>Branching functionally</h2>
+  <p>
+    Use recursion
+    <pre>scala> def factorial(i:Int):Int = {
+      if( i > 0 ) {
+        i*factorial(i-1)
+      }
+      else {
+        1
+      }
+    }
+    scala> factorial(12)
+    res2: Int = 479001600
+    
+    scala> def fact(i:Int):Int = (1 to i).foldLeft(1)(_*_)
+    fact: (i: Int)Int
+    scala> fact(4)
+    res4: Int = 24</pre>
+    Warning: recursion can lead to stackoverflow. You have to be wise and use tail recursion.
+  </p>
+</section>
+<section>
+  <h2>Functional collection manipulation in js</h2>
+  <ul>
+    <li>http://underscorejs.org/</li>
+    <li>http://eloquentjavascript.net/chapter6.html</li>
+    <li>https://github.com/mbostock/d3/wiki/Arrays</li>
+  </ul>
+</section>
+<section>
+  <h2>Advanced functional programming</h2>
+  <ul>
+    <li>Pattern matching</li>
+    <li>Tail call optimisation (scala @tailrec)</li>
+    <li>Lazy values and structures (infite streams / collections)</li>
+    <li>Partial functions, currying</li>
+    <li>DSLs</li>
+  </ul>
+</section>
+<section>
+  <h2 id="functional-patterns">Functional patterns</h2>
+  
+  <ul>
+    <li><a href="http://en.wikipedia.org/wiki/Reactive_programming">Reactive programming</a></li>
+    <li>In javascript: <a href="http://docs.meteor.com/#reactivity">Meteor</a></li>
+    <li>In Objective-C: <a href="https://github.com/blog/1107-reactivecocoa-for-a-better-world">Github&apos;s Reactive Cocoa</a></li>
+    <li><a href="http://elm-lang.org/learn/What-is-FRP.elm">Elm</a></li>
+    <li>In C#: RX by Erik Meijer</li>
+    <li>Category Theory and Monads (next talk)</li>
+    <li>Actors, 
+      <ul>
+        <li><a href="http://learnyousomeerlang.com/what-is-otp">Erlang and OTP</a></li>
+        <li>Scala, <a href="http://akka.io/">Akka</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>Extremely cool functional projects</h2>
+  <ul>
+    <li>Datomic, the immutable database.</li>
+    <li>Chris Granger's LightTable: http://www.lighttable.com/</li>
+    <li>ClojureScript as a whole</li>
+  </ul>
+</section>
+<section>
+  <h2>Choose your weapon</h2>
+  <ul>
+    <li>
+      Pure functional languages
+      <ul>
+        <li>Haskell</li>
+        <li>Clojure</li>
+      </ul>
+    </li>
+    <li>
+      Hybrid languages
+      <ul>
+        <li>Scala</li>
+        <li>Erlang</li>
+        <li>F#</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<section>
+  <h2 id="take-aways">Take aways</h2>
+  <p>Learn a functional language</p>
+  
+  <ul>
+    <li>Read
+      <ul>
+        <li><a href="http://www.haskell.org/tutorial/">A gentle introduction to Haskell</a></li>
+        <li>The joy of Clojure     </li>
+      </ul>
+    </li>
+    <li>Follow
+      <ul>
+        <li>Rich Hickey</li>
+        <li>Erik Meijer</li>
+        <li>Martin Odersky</li>
+      </ul>
+    </li>
+    <li>Watch
+      <ul>
+        <li>Scala on Coursera by Martin Odersky</li>
+        <li><a href="http://www.infoq.com/presentations/The-Design-of-Datomic">Infoq video&apos;s on Datomic</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>

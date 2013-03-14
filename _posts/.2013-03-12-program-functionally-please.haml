@@ -1,0 +1,206 @@
+:plain
+  ---
+  layout: presentation
+  title: Program functionally, please
+  ---
+
+%section
+  %h2 Benefits
+  %ul
+    %li Higher abstractions
+    %li Concise code
+    %li Closer to the human mind
+    %li Easier to test
+%section
+  %h2 Functional programming principles
+  %ul
+    %li Immutability
+    %li No side effects
+    %li Functions are first class
+%section
+  %h2 First class functions
+  %p Functions as an argument
+  %pre
+    :plain
+      var server = net.createServer(function (socket) {
+        socket.write('Echo server\r\n');
+        socket.pipe(socket);
+      });
+%section
+  %h2 First class functions
+  %p Functions as return values
+  %pre
+    :plain
+      var color = d3.scale.linear()
+        .domain([-1, 0, 1])
+        .range(["red", "white", "green"]);
+      var c = color(1.1);
+%section
+  %h2 First class functions
+  %p You can use blocks in ruby
+  %p function in javascript
+  %p `A => B` type in scala
+%section
+  %h2 Immutability
+  %ul
+    %li Variables shouldn't mutate once they are set
+    %li Scala has two possible references: vars and vals
+    %li Reasignment to vals will generate a compile time error
+    %li -> embrace functional thinking
+%section
+  %h2 Functional thinking: collection manipulation
+  %p 
+    Please don't do this
+    %pre
+      :plain
+        function add1(arr) {
+          for(i in arr) {
+            arr[i] = arr[i]+1;
+          }
+          return arr;
+        }
+%section
+  %h2 Functional thinking: collection manipulation
+  %p 
+    See why ?
+    %pre
+      :plain
+        > add1
+        function add1(arr){
+              for(i in arr) {
+                arr[i] = arr[i]+1;
+              }
+              return arr;
+            }
+        > var l = [1,2,3,4];
+        undefined
+        > add1(l)
+        [2, 3, 4, 5]
+        > l
+        [2, 3, 4, 5] 
+%section
+  %h2 Functional thinking: collection manipulation
+  %p 
+    Try this
+    %pre
+      :plain
+        function add1(arr) {
+          return arr.map(function(i) { return i+1; } );
+        }
+    %i javascript arrays are functors
+%section
+  %h2 Functional thinking: collection manipulation
+  %p 
+    %pre
+      :plain
+        > add1
+        function add1(arr) {
+          return arr.map(function(i) { return i+1; } );
+        }
+        > var l = [1,2,3,4];
+        undefined
+        > add1(l)
+        [2, 3, 4, 5]
+        > l
+        [1, 2, 3, 4] 
+%section
+  %h2 Functional thinking: collection manipulation
+  %pre
+    :plain
+      scala> "Le nombre de lettre des mots uniques de cette phrase"
+        .split(" ")
+        .distinct
+        .foldLeft(0)(_ + _.length)
+      res1: Int = 41
+      scala> "Une liste de mots de cette phrase regroupes par longueur"
+        .split(" ")
+        .groupBy(_.length)
+      res2: scala.collection.immutable.Map[Int,Array[java.lang.String]] = Map(5 -> Array(liste, cette), 6 -> Array(phrase), 9 -> Array(regroupes), 2 -> Array(de, de), 3 -> Array(Une, par), 8 -> Array(longueur), 4 -> Array(mots))
+      scala> res2.toList.sortBy(_._1)
+      res3: List[(Int, Array[java.lang.String])] = List((2,Array(de, de)), (3,Array(Une, par)), (4,Array(mots)), (5,Array(liste, cette)), (6,Array(phrase)), (8,Array(longueur)), (9,Array(regroupes)))
+      scala> res3.flatMap(_._2)
+      res4: List[java.lang.String] = List(de, de, Une, par, mots, liste, cette, phrase, longueur, regroupes)
+%section
+  %h2 Branching functionally
+  %p 
+    Use recursion
+    %pre
+      :plain
+        scala> def factorial(i:Int):Int = {
+          if( i > 0 ) {
+            i*factorial(i-1)
+          }
+          else {
+            1
+          }
+        }
+        scala> factorial(12)
+        res2: Int = 479001600
+        
+        scala> def fact(i:Int):Int = (1 to i).foldLeft(1)(_*_)
+        fact: (i: Int)Int
+        scala> fact(4)
+        res4: Int = 24
+    Warning: recursion can lead to stackoverflow. You have to be wise and use tail recursion.
+%section
+  %h2 Functional collection manipulation in js
+  %ul
+    %li http://underscorejs.org/
+    %li http://eloquentjavascript.net/chapter6.html
+    %li https://github.com/mbostock/d3/wiki/Arrays
+%section
+  %h2 Advanced functional programming
+  %ul
+    %li Pattern matching
+    %li Tail call optimisation (scala @tailrec)
+    %li Lazy values and structures (infite streams / collections)
+    %li Partial functions, currying
+    %li DSLs
+%section
+  :markdown
+    ## Functional patterns
+       
+    *  [Reactive programming](http://en.wikipedia.org/wiki/Reactive_programming)
+      - In javascript: [Meteor](http://docs.meteor.com/#reactivity)
+      - In Objective-C: [Github's Reactive Cocoa](https://github.com/blog/1107-reactivecocoa-for-a-better-world)
+      - [Elm](http://elm-lang.org/learn/What-is-FRP.elm)
+      - In C#: RX by Erik Meijer
+    * Category Theory and Monads (next talk)
+    * Actors, 
+       - [Erlang and OTP](http://learnyousomeerlang.com/what-is-otp)
+       - Scala, [Akka](http://akka.io/)
+%section 
+  %h2 Extremely cool functional projects
+  %ul
+    %li Datomic, the immutable database.
+    %li Chris Granger's LightTable: http://www.lighttable.com/
+    %li ClojureScript as a whole
+%section
+  %h2 Choose your weapon
+  %ul
+    %li 
+      Pure functional languages
+      %ul
+        %li Haskell
+        %li Clojure
+    %li
+      Hybrid languages
+      %ul
+        %li Scala
+        %li Erlang
+        %li F#
+%section
+  :markdown
+    ## Take aways
+    Learn a functional language
+    
+    * Read
+      * [A gentle introduction to Haskell](http://www.haskell.org/tutorial/)
+      * The joy of Clojure     
+    * Follow
+      - Rich Hickey
+      - Erik Meijer
+      - Martin Odersky
+    * Watch
+      - Scala on Coursera by Martin Odersky
+      - [Infoq video's on Datomic](http://www.infoq.com/presentations/The-Design-of-Datomic)
