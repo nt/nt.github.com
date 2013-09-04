@@ -1,0 +1,18 @@
+---
+layout: post
+title: Visualizing the training of a logistic regression built with theano
+---
+
+h1. {{ page.title }}
+
+p(meta). Tuesday, September 3 2013 - San Francisco
+
+This work is simply the output of the "deeplearning.net logisitic regression tutorial":http://deeplearning.net/tutorial/logreg.html#logreg. 
+
+The tutorial walks the user through the conception of a two layer neural network. The first layer acts as the input vector and the output layer are the features we are trying to detect (ie: the actual number).
+
+The dataset used is the MNIST database of handwritten digits. This is a visualisation of the weight matrix and bias vector during the training. 
+
+!(column)/images/logreg.gif!
+
+All the code to create this graph can be found "here":https://github.com/nt/deeplearning. Checkout the Makefile.
