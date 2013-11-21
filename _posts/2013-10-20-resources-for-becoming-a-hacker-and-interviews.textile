@@ -1,0 +1,43 @@
+---
+layout: post
+title: Resources for becoming a hacker (and for interviews)
+---
+
+h1. {{ page.title }}
+
+p(meta). November 20, 2013
+
+I'm often asked for recommended reads and materials for becoming a better programmer and candidate, so here's a quick writeup, and hopefully a more sustainable answer.
+
+h2. Interviewing at large startups (Square, Facebook, Twitter, Google..)
+
+These are mostly focusing on algorithms and data structures. You will need to know this to be a good programmer even if you don't merge sort every day. So put in the work, it's both interesting and rewarding.
+
+  * "TopCoder's introduction to algorithms":http://www.topcoder.com/tc?d1=tutorials&d2=alg_index&module=Static, a good introduction with training exercises.
+  * Practice and participate in "Google Code Jam":http://code.google.com/codejam/
+  * Read Steve Yegge's "post about getting a job at google":http://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html
+  * If there is one CS book to own and work with, it's "Introduction to Algorithms, CLRS":http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844/ref=la_B000AQ24AS_1_1?s=books&ie=UTF8&qid=1385017000&sr=1-1
+  * Choose a language and stick with it for training and interviewing, Java and C++ are the recommended options
+
+h2. Be passionate and knowledgable about many topics
+
+Digging into a subject in depth is a great way to learn about CS. It also is quite common to have an interview discussion that will be related to one of these subjects. Remember, being a good programmer means learning, always.
+
+  * Read "Hacker News":https://news.ycombinator.com
+  * Signup for "O'Relly Radar's mailing list":http://radar.oreilly.com
+  * Example of good reads: "High performance networking in Google Chrome":http://www.igvita.com/posa/high-performance-networking-in-google-chrome/, "Deep Learning":http://deeplearning.net/tutorial/, "BitCoin original article":http://bitcoin.org/bitcoin.pdf
+
+h2. Learn about distributed systems
+
+This is the crux of all tech company these days.
+
+  * Read the "High Scalability blog":http://highscalability.com
+  * Read about the "Google File System":http://research.google.com/archive/gfs.html, "Map Reduce":http://research.google.com/archive/mapreduce.html, "Big Table":http://research.google.com/archive/bigtable.html and know that "Hadoop":http://hadoop.apache.org is the most common open source implementation
+
+h2. Misc
+
+  * Always try to be recommended internally, resumes posted to the website have a small chance of being read
+  * Train for phone screens and alg interviews by applying to companies you care less about
+  * Gem: Peter Norvig's "blog":http://norvig.com
+  * You have no excuse for not knowing and using "git and github":https://help.github.com/articles/set-up-git
+  * Try yourself with actual interview questions on "Career Cup":http://www.careercup.com or "Glassdoor":http://www.glassdoor.com/Interview/Twitter-Interview-Questions-E100569.htm
